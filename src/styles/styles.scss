@@ -1,0 +1,28 @@
+html {
+	font-size: 16px;
+}
+
+body {
+	font-size: 1rem;
+	line-height: 1.25rem;
+	margin: 0;
+}
+
+* {
+	line-height: inherit;
+}
+nav.navbar {
+	line-height: 2rem;
+	ul {
+		list-style: none;
+		li {
+			display: inline-block;
+			padding: 0 1rem;
+		}
+	}
+
+	.dropdown-menu {
+		display: none;
+	}
+
+}

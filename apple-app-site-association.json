@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [ "CTJ5N5AH69.com.javidkeskin.balances"],
+        "components": [
+          {
+            "/": "/auth/reset/*"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [ "CTJ5N5AH69.com.javidkeskin.balances" ]
+  }
+}
