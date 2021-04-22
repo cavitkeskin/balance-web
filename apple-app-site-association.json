@@ -2,10 +2,19 @@
   "applinks": {
     "details": [
       {
-        "appIDs": [ "CTJ5N5AH69.com.javidkeskin.balances"],
+        "appID": "CTJ5N5AH69.com.javidkeskin.balances",
         "components": [
           {
-            "/": "/auth/reset/*"
+            "/auth": "/reset/*"
+          },
+          {
+            "/auth": "/invitation/*"
+          },
+          {
+            "/": "/invite/*"
+          },
+          {
+            "/bogus": "/bogusy/*"
           }
         ]
       }

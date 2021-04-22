@@ -2,8 +2,9 @@
 const Dotenv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 const path = require('path')
 const resolve = file => path.resolve(__dirname, file)
 
@@ -39,7 +40,7 @@ const config = {
       // 	}
       // },
       {
-        test: /\.(js|jsx|mjs)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [
           {
@@ -87,7 +88,9 @@ const config = {
     ],
   },
   plugins: [
-    new Dotenv(),
+    new Dotenv({
+      path: development ? './.env' : './.env.production',
+    }),
     new CleanWebpackPlugin(),
     // new MiniCssExtractPlugin({
     //   filename: development ? '[name].css' : '[name].[contenthash].css',
@@ -96,6 +99,14 @@ const config = {
     new HtmlWebpackPlugin({
       inject: true,
       template: './src/index.html',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'apple-app-site-association.json',
+          to: '[name]',
+        },
+      ],
     }),
   ],
 }

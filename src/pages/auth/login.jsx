@@ -137,7 +137,7 @@ class LoginDialog extends React.Component {
                     label='Email Address'
                     autoComplete='email'
                     autoFocus
-                    // type='email'
+                    type='email'
                     helperText={errors.username}
                     value={values.username}
                     onChange={handleChange}
