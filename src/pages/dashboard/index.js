@@ -25,7 +25,7 @@ const testLinks = [
   { title: 'exp://192.168.1.220:19000/--/', 
     children: [
       { url: 'exp://192.168.1.220:19000/--/auth/reset/123456', title: 'auth/reset/123456' },
-      { url: 'exp://192.168.1.220:19000/--/auth/invite/1234567890987654321', title: 'auth/invite/1234567890987654321' },
+      { url: 'exp://192.168.1.220:19000/--/auth/invite/607b022359f97708bd468884', title: 'auth/invite/607b022359f97708bd468884' },
     ],
   },
 
