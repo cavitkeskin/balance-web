@@ -25,10 +25,17 @@ const testLinks = [
   { title: 'exp://192.168.1.220:19000/--/', 
     children: [
       { url: 'exp://192.168.1.220:19000/--/auth/reset/123456', title: 'auth/reset/123456' },
-      { url: 'exp://192.168.1.220:19000/--/auth/invite/607b022359f97708bd468884', title: 'auth/invite/607b022359f97708bd468884' },
+      { 
+        url: 'exp://192.168.1.220:19000/--/confirm/invite/607b022359f97708bd468884', 
+        title: 'confirm/invite/607b022359f97708bd468884' },
+      { 
+        url: 'exp://192.168.1.220:19000/--/confirm/invite/607b022359f97708bd468884/deny', 
+        title: 'confirm/invite/607b022359f97708bd468884/deny' },
+      { 
+        url: 'exp://192.168.1.220:19000/--/confirm/invite/607b022359f97708bd468884/accept', 
+        title: 'confirm/invite/607b022359f97708bd468884/accept' },
     ],
   },
-
 ]
 
 const Dashboard = () => {
