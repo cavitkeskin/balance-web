@@ -4,18 +4,8 @@
       {
         "appID": "CTJ5N5AH69.com.javidkeskin.balances",
         "components": [
-          {
-            "/auth": "/reset/*"
-          },
-          {
-            "/auth": "/invitation/*"
-          },
-          {
-            "/": "/invite/*"
-          },
-          {
-            "/bogus": "/bogusy/*"
-          }
+          { "/": "/auth/reset/*" },
+          { "/": "/confirm/invitation/*" }
         ]
       }
     ]
