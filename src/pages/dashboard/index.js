@@ -20,6 +20,7 @@ const testLinks = [
   { title: 'https://books.fivepebble.com/', 
     children: [
       { url: 'https://books.fivepebble.com/auth/reset/123456', title: 'auth/reset/123456' },
+      { url: 'https://books.fivepebble.com/confirm/invitation/607b022359f97708bd468884', title: 'confirm/invitation/:token' },
     ],
   },
   { title: 'exp://192.168.1.220:19000/--/', 
@@ -27,13 +28,13 @@ const testLinks = [
       { url: 'exp://192.168.1.220:19000/--/auth/reset/123456', title: 'auth/reset/123456' },
       { 
         url: 'exp://192.168.1.220:19000/--/confirm/invite/607b022359f97708bd468884', 
-        title: 'confirm/invite/607b022359f97708bd468884' },
+        title: 'confirm/invite/:token' },
       { 
         url: 'exp://192.168.1.220:19000/--/confirm/invite/607b022359f97708bd468884/deny', 
-        title: 'confirm/invite/607b022359f97708bd468884/deny' },
+        title: 'confirm/invite/:token/deny' },
       { 
         url: 'exp://192.168.1.220:19000/--/confirm/invite/607b022359f97708bd468884/accept', 
-        title: 'confirm/invite/607b022359f97708bd468884/accept' },
+        title: 'confirm/invite/:token/accept' },
     ],
   },
 ]
