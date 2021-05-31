@@ -11,6 +11,8 @@ import AvatarEditor from '../../components/avatar-editor'
 
 import Header from './header'
 
+const invitationId = '609161303c3ecefc5c94d936'
+
 const testLinks = [
   { title: 'fpbook://',
     children: [
@@ -20,21 +22,21 @@ const testLinks = [
   { title: 'https://books.fivepebble.com/', 
     children: [
       { url: 'https://books.fivepebble.com/auth/reset/123456', title: 'auth/reset/123456' },
-      { url: 'https://books.fivepebble.com/confirm/invitation/607b022359f97708bd468884', title: 'confirm/invitation/:token' },
+      { url: `https://books.fivepebble.com/confirm/invitation/${invitationId}`, title: 'confirm/invitation/:token' },
     ],
   },
   { title: 'exp://192.168.1.220:19000/--/', 
     children: [
       { url: 'exp://192.168.1.220:19000/--/auth/reset/123456', title: 'auth/reset/123456' },
       { 
-        url: 'exp://192.168.1.220:19000/--/confirm/invite/607b022359f97708bd468884', 
-        title: 'confirm/invite/:token' },
+        url: `exp://0.0.0.0:19000/--/confirm/invitation/${invitationId}`, 
+        title: 'confirm/invitation/:token' },
       { 
-        url: 'exp://192.168.1.220:19000/--/confirm/invite/607b022359f97708bd468884/deny', 
-        title: 'confirm/invite/:token/deny' },
+        url: `exp://192.168.1.220:19000/--/confirm/invitation/${invitationId}/deny`, 
+        title: 'confirm/invitation/:token/deny' },
       { 
-        url: 'exp://192.168.1.220:19000/--/confirm/invite/607b022359f97708bd468884/accept', 
-        title: 'confirm/invite/:token/accept' },
+        url: `exp://192.168.1.220:19000/--/confirm/invitation/${invitationId}/accept`, 
+        title: 'confirm/invitation/:token/accept' },
     ],
   },
 ]

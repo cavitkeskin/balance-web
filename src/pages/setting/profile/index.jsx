@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 // Application
 import * as actions from '@/store/account-users'
+import * as auth from '@/store/auth'
 import Loading from '@/components/loading'
 
 // import ProfileForm from './profile-form'
@@ -26,10 +27,11 @@ function Profile() {
   const session = useSelector(state => state.session)
   const profile = useSelector(state => state.accountUsers.user)
   useEffect(() => {
-    if(!profile || profile.user.id !== session.user.id) {
-      dispatch(actions.get('session'))
-    }
-  })
+    // if(!profile || profile.user.id !== session.user.id) {
+    session || dispatch(auth.session())
+    // }
+  }, [])
+  console.info({ session })
   if(!profile) return <Loading/>
   return (
     <Grid container spacing={2}>

@@ -4,10 +4,7 @@ import { connect } from 'react-redux'
 import * as yup from 'yup'
 import { Formik } from 'formik'
 import { Link as RouterLink } from 'react-router-dom'
-import { login } from '@/store/auth'
-import XHRErrorDialog from '@/components/error/XHRErrorDialog'
-import XHRErrorPanel from '@/components/error/XHRErrorPanel'
-
+import { pick } from 'lodash'
 // Metarial
 import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
@@ -21,6 +18,11 @@ import Link from '@material-ui/core/Link'
 import Box from '@material-ui/core/Box'
 import Copyright from '@/components/copyright'
 import { withStyles } from '@material-ui/core/styles'
+
+// Application
+import { login } from '@/store/auth'
+import XHRErrorDialog from '@/components/error/XHRErrorDialog'
+import XHRErrorPanel from '@/components/error/XHRErrorPanel'
 
 const styles = theme => {
   return {
@@ -69,8 +71,8 @@ class LoginDialog extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: 'admin-bogus.com',
-      password: 'admin',
+      username: 'user@bogus.com',
+      password: 'user',
       times: 0,
       error: null,
       expanded: false,
@@ -106,7 +108,7 @@ class LoginDialog extends React.Component {
           />
           <Formik
             className={classes.form}
-            initialValues={{ username: '', password: '' }}
+            initialValues={pick(this.state, ['username', 'password'])}
             validationSchema={schema}
             onSubmit={this.handleSubmit}
             validateOnBlur={false}

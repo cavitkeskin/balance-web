@@ -1,6 +1,6 @@
 import axios from 'axios'
+import { get } from 'lodash'
 import cookie from 'js-cookie'
-// import { pick } from "lodash";
 
 axios.defaults.baseURL = process.env.API_SERVER
 
@@ -10,40 +10,42 @@ const actionTypes = type => [
   `${type}_FAILURE`,
 ]
 
-const buildOptions = action => {
-  const { url, method, payload, headers } = action
-  const token = cookie.get('session')
-  let options = {
+const buildOptions = (action, token) => {
+  const { url, method, payload, headers, options } = action
+  const config = {
     url,
     method,
     headers: { Authorization: token ? `Bearer ${token}` : '', ...headers },
   }
-  if (!payload) return options
   switch (method) {
     case 'post':
-    case 'update':
+    case 'put':
     case 'patch':
-      options['data'] = payload
+      config.data = payload
+      if (options?.params) config.params = options.params
       break
     case 'get':
     case 'delete':
     default:
-      options['params'] = payload
+      config.params = payload
   }
-  return options
+  return config
 }
 
 // eslint-disable-next-line
 export default store => next => action => {
-  const { api, payload } = action
+  const { api, payload, options } = action
   if (!api) return next(action)
   const [requestType, successType, failureType] = Array.isArray(api) ? api : actionTypes(api)
-  next({ type: requestType, payload })
-  let options = buildOptions(action)
-  return axios({ ...options })
-    .then(({ data }) => next({ type: successType, data }))
+  next({ type: requestType, payload, options })
+  // const token = get(store.getState(), 'session.token', null)
+  const token = cookie.get('session')
+  const config = buildOptions(action, token)
+  return axios(config)
+    .then(({ data }) => next({ type: successType, data, options }))
     .catch(error => {
-      next({ type: failureType, error })
+      next({ type: failureType, error, payload, options })
       return Promise.reject(error)
     })
 }
+
